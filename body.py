@@ -17,28 +17,15 @@ class Recipes:
             "ingredients": ingredients
         }
 
-        #existing_data.append({
-        #    "title": banana_bread_title["title"],
-        #    "ingredients": banana_bread_ing["ingredients"]
-        #   })
-
         data.append(updated_recipe)
 
         with open("recipes.json", "w") as json_file:
             json.dump(data, json_file)                       
-
-        #recipes_list = data["recipes_list"]             #volatile variable, define in init
-        #recipes_list[recipe] = ingredients
         
 
     def delete_recipe(self, recipe):
         with open("recipes.json", "r") as json_file:
             data = json.load(json_file)
-
-        #recipes_list = data["recipes_list"]
-
-        #if recipe not in data:
-        #    return ("Recipe not archived")
 
         for recipes in data:
             if recipes["title"] == recipe:
@@ -49,9 +36,6 @@ class Recipes:
             print("Recipe not archived")
             return
 
-        #if recipe in recipes_list:
-        #    del recipes_list[recipe]
-
         with open("recipes.json", "w") as json_file:
             json.dump(data, json_file)
 
@@ -59,9 +43,6 @@ class Recipes:
     def edit_recipe(self, recipe, ingredients):
         with open("recipes.json", "r") as json_file:
             data = json.load(json_file)
-
-        #if recipe not in data:
-        #    return ("Recipe not archived")
 
         for recipes in data:
             #current = recipes["title"]
@@ -73,23 +54,36 @@ class Recipes:
             print("Recipe not archived")
             return
 
-        #recipes_list = data["recipes_list"]
+        with open("recipes.json", "w") as json_file:
+            json.dump(data, json_file)
 
-        #if recipe in recipes_list:
-        #    recipes_list[recipe] = ingredients
+    def add_ingredients(self, recipe, ingredients):
+        with open("recipes.json", "r") as json_file:
+            data = json.load(json_file)
+
+        for recipes in data:
+            #current = recipes["title"]
+            if recipes["title"] == recipe:
+                ingredients_value = recipes["ingredients"]
+
+                for item in ingredients:
+                    if item in ingredients_value:
+                        print("Ingredient(s) already exist")
+                    else:
+                        ingredients_value.append(item)
+                
+                break
+
+        else:
+            print("Recipe not archived")
+            return
 
         with open("recipes.json", "w") as json_file:
             json.dump(data, json_file)
 
-
     def search_recipe(self, recipe):
         with open("recipes.json", "r") as json_file:
             data = json.load(json_file)
-
-        #recipes_list = data["recipes_list"]
-
-        #if recipe in recipes_list:
-        #    return recipes_list[recipe]
 
         for recipes in data:
                 if recipes["title"] == recipe:
@@ -104,12 +98,6 @@ class Recipes:
         with open("recipes.json", "r") as json_file:
             data = json.load(json_file)
 
-        #recipes_list = data["recipes_list"]
-
-        #for recipe, ingredients in recipes_list.items():
-        #    if ingredient in ingredients:
-        #        valid_recipes.append(recipes_list[recipe])
-
         for recipes in data:
             for items in recipes["ingredients"]:
                 if items == ingredient:
@@ -122,9 +110,6 @@ class Recipes:
 
     
 if __name__ == "__main__":
-    #banana_bread_title = {"title": "banana bread"}
-    #banana_bread_ing = {"ingredients": ["bananas", "flour", "eggs"]}
-    
     test = Recipes()
 
     #test.add_recipe("banana bread", ["bananas", "flour", "eggs"])
@@ -137,18 +122,19 @@ if __name__ == "__main__":
 
     #print(test.search_ingedient("oranges"))
 
-    test.add_recipe("banana bread", ["bananas", "eggs", "flour"])
-    test.add_recipe("pizza", ["tomatoes", "flour", "cheese"])
-    test.add_recipe("salad", ["lettuce", "tomatoes", "onions"])
-    test.add_recipe("chicken and broccoli", ["chicken", "broccoli", "soy sauce"])
+    #test.add_recipe("banana bread", ["bananas", "eggs", "flour"])
+    #test.add_recipe("pizza", ["tomatoes", "flour", "cheese"])
+    #test.add_recipe("salad", ["lettuce", "tomatoes", "onions"])
+    #test.add_recipe("chicken and broccoli", ["chicken", "broccoli", "soy sauce"])
 
-    test.delete_recipe("salad")
-    print(test.search_recipe("salad"))
-    test.add_recipe("pizza", ["tomatoes", "flour", "cheese"])
+    #test.delete_recipe("salad")
+    #print(test.search_recipe("salad"))
+    #test.add_recipe("pizza", ["tomatoes", "flour", "cheese"])
 
-    test.edit_recipe("pizza", ["tomatoes", "flour", "cheese", "pepperoni"])
-    print(test.search_recipe("pizza"))
+    #test.edit_recipe("pizza", ["tomatoes", "flour", "cheese", "pepperoni"])
+    #print(test.search_recipe("pizza"))
 
+    #test.add_ingredients("pizza", ["yeast", "water"])
     #print(test.search_recipe("popcorn"))
     #test.edit_recipe("salad", ["lettuce", "tomato", "eggs"])
 
