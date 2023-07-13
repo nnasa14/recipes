@@ -107,6 +107,18 @@ class Recipes:
             return "No recipes contain this ingredient"
 
         return valid_recipes
+    
+    def import_recipe(self, file_path):
+        with open("recipes.json", "r") as file1:
+            recipes = json.load(file1)
+
+        with open(file_path, "r") as file2:
+            add_recipes = json.load(file2)
+
+        recipes += add_recipes
+
+        with open("recipes.json", "w") as file1:
+            json.dump(recipes, file1)
 
     
 if __name__ == "__main__":
