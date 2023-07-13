@@ -139,6 +139,17 @@ class Ingredients:
         with open("recipes.json", "w") as json_file:
             json.dump(data, json_file)
 
+    def edit_ingredients(self, recipe, ingredients):
+        with open("recipes.json", "r") as json_file:
+            data = json.load(json_file)
+
+        for recipes in data:
+            if recipes["title"] == recipe:
+                recipes["ingredients"] = ingredients
+
+        with open("recipes.json", "w") as json_file:
+            json.dump(data, json_file)
+
     
 if __name__ == "__main__":
     test = Recipes()
@@ -170,5 +181,7 @@ if __name__ == "__main__":
     #print(test.search_recipe("popcorn"))
     #test.edit_recipe("salad", ["lettuce", "tomato", "eggs"])
 
-    test_ing.delete_ingredient("chicken and broccoli", "soy sauce")
+    #test_ing.delete_ingredient("chicken and broccoli", "soy sauce")
+    test_ing.edit_ingredients("chicken and broccoli", ["chicken", "broccoli", "soy sauce"])
+
 
