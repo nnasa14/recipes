@@ -78,6 +78,15 @@ class Ingredients:
             self.data = json.load(json_file) 
 
 
+    def __str__(self):
+        ingredients_list = []
+
+        for item in self.data:
+            ingredients_list.append(item["ingredients"])
+
+        return f"{ingredients_list}"
+
+
     def search_ingedient(self, ingredient):         
         valid_recipes = []
 
@@ -110,6 +119,7 @@ class Ingredients:
             print("Recipe not archived")
             return
         
+
     def delete_ingredient(self, recipe, ingredient):
         for recipes in self.data:
             if recipes["title"] == recipe:
@@ -122,6 +132,7 @@ class Ingredients:
         with open("recipes.json", "w") as json_file:
             json.dump(self.data, json_file)
 
+
     def edit_ingredients(self, recipe, ingredients):
         for recipes in self.data:
             if recipes["title"] == recipe:
@@ -133,19 +144,19 @@ class Ingredients:
     
 if __name__ == "__main__":
     test = Recipes()
-    #test_ing = Ingredients()
+    test_ing = Ingredients()
 
-    #print(test)
+    print(test_ing)
 
-    #test.add_recipe("banana bread", ["bananas", "flour", "eggs"])
+    test.add_recipe("banana bread", ["bananas", "flour", "eggs"])
 
-    #test.delete_recipe("dgsdgsdg")
+    test.delete_recipe("popcorn")
 
-    #test.edit_recipe("ghjjrtyg", ["i", "y", "t"])
+    test.edit_recipe("popcorn", ["pop", "corn"])
 
-    #print(test.search_recipe("popcorn"))
+    print(test.search_recipe("popcorn"))
 
-    #print(test_ing.search_ingedient("oranges"))
+    print(test_ing.search_ingedient("oranges"))
 
 
     test.add_recipe("banana bread", ["bananas", "eggs", "flour"])
@@ -155,18 +166,20 @@ if __name__ == "__main__":
 
     print(test)
 
-    #print(test.search_recipe("salad"))
-    #test.delete_recipe("salad")
-    #test.edit_recipe("pizza", ["tomatoes", "flour", "cheese", "pepperoni"])
-    #print(test.search_recipe("pizza"))
+    print(test.search_recipe("salad"))
+    test.delete_recipe("salad")
+    test.edit_recipe("pizza", ["tomatoes", "flour", "cheese", "pepperoni"])
+    print(test.search_recipe("pizza"))
 
-    #test.add_recipe("pizza", ["tomatoes", "flour", "cheese"])
+    test.add_recipe("pizza", ["tomatoes", "flour", "cheese"])
 
-    #print(test.search_recipe("pizza"))
+    print(test.search_recipe("pizza"))
 
-    #test_ing.add_ingredients("pizza", ["yeast", "water"])
-    #print(test.search_recipe("popcorn"))
-    #test.edit_recipe("salad", ["lettuce", "tomato", "eggs"])
+    test_ing.add_ingredients("pizza", ["yeast", "water"])
+    print(test.search_recipe("popcorn"))
+    test.edit_recipe("salad", ["lettuce", "tomato", "eggs"])
 
-    #test_ing.delete_ingredient("chicken and broccoli", "soy sauce")
-    #test_ing.edit_ingredients("chicken and broccoli", ["chicken", "broccoli", "soy sauce"])
+    test_ing.delete_ingredient("chicken and broccoli", "soy sauce")
+
+    test_ing.edit_ingredients("chicken and broccoli", ["chicken", "broccoli", "soy sauce"])
+    print(test)
