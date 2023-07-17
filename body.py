@@ -9,6 +9,8 @@ class Recipes:
     def __str__(self):
         return f"{self.data}"
 
+    def __repr__(self):
+        return f"Recipes(data = self.data)"
     
     def add_recipe(self, recipe, ingredients):
         if any(entry["title"] == recipe for entry in self.data):
@@ -86,6 +88,8 @@ class Ingredients:
 
         return f"{ingredients_list}"
 
+    def __repr__(self):
+        return f"Recipes(data = self.data)"
 
     def search_ingedient(self, ingredient):         
         valid_recipes = []
