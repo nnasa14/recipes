@@ -1,4 +1,5 @@
 import json
+import sqlite3
 
 
 class Recipes:
@@ -125,6 +126,7 @@ class Ingredients:
 
 
 if __name__ == "__main__":
+    conn = sqlite3.connect("recipes.db")
     test = Recipes()
     test_ing = Ingredients()
     print(test_ing)
