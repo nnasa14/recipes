@@ -1,12 +1,13 @@
 import json
 import sqlite3
 import recipes
-import ingedients
+import ingredients
+import __init__
 
 if __name__ == "__main__":
     conn = sqlite3.connect("recipes.db")
-    test = Recipes()
-    test_ing = Ingredients()
+    test = recipes.Recipes()
+    test_ing = ingredients.Ingredients()
     print(test_ing)
     test.add_recipe("banana bread", ["bananas", "flour", "eggs"])
     test.delete_recipe("popcorn")
