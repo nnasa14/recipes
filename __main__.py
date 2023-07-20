@@ -3,36 +3,38 @@ import sqlite3
 import recipes
 import ingredients
 import __init__
+import argparse
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Document recipes')
+    parser.add_argument('-t', '--title', type=str, metavar='', required=True, help='title of recipe')
+    parser.add_argument('-I', '--ingredients', type=list, metavar='', required=True, help='list of ingredients for recipe')
+    parser.add_argument('-i', '--ingredient', type=list, metavar='', required=True, help='one ingredient among the list of ingredients')
+    args = parser.parse_args()
     conn = sqlite3.connect("recipes.db")
     test = recipes.Recipes()
     test_ing = ingredients.Ingredients()
     print(test_ing)
-    test.add_recipe("banana bread", ["bananas", "flour", "eggs"])
-    test.delete_recipe("popcorn")
-    test.edit_recipe("popcorn", ["pop", "corn"])
-    print(test.search_recipe("popcorn"))
-    print(test_ing.search_ingedient("oranges"))
-    test.add_recipe("banana bread", ["bananas", "eggs", "flour"])
-    test.add_recipe("pizza", ["tomatoes", "flour", "cheese"])
-    test.add_recipe("salad", ["lettuce", "tomatoes", "onions"])
-    test.add_recipe(
-        "chicken and broccoli", ["chicken", "broccoli", "soy sauce"])
+    test.add_recipe(args.title, args.ingredients)
+    test.delete_recipe(args.title)
+    test.edit_recipe(args.title, args.ingredients)
+    print(test.search_recipe(args.title))
+    print(test_ing.search_ingedient(args.ingredient))
+    test.add_recipe(args.title, args.ingredients)
     print(test)
-    print(test.search_recipe("salad"))
-    test.delete_recipe("salad")
+    print(test.search_recipe(args.title))
+    test.delete_recipe(args.title)
     test.edit_recipe(
-        "pizza", ["tomatoes", "flour", "cheese", "pepperoni"])
-    print(test.search_recipe("pizza"))
-    test.add_recipe("pizza", ["tomatoes", "flour", "cheese"])
-    print(test.search_recipe("pizza"))
-    test_ing.add_ingredients("pizza", ["yeast", "water"])
-    print(test.search_recipe("popcorn"))
+        args.title, args.ingredients)
+    print(test.search_recipe(args.title))
+    test.add_recipe(args.title, args.ingredients)
+    print(test.search_recipe(args.title))
+    test_ing.add_ingredients(args.title, args.ingredients)
+    print(test.search_recipe(args.title))
     test.edit_recipe(
-        "salad", ["lettuce", "tomato", "eggs"])
+        args.title, args.ingredients)
     test_ing.delete_ingredient(
-        "chicken and broccoli", "soy sauce")
+        args.title, args.ingredient)
     test_ing.edit_ingredients(
-        "chicken and broccoli", ["chicken", "broccoli", "soy sauce"])
+        args.title, args.ingredients)
     print(test)
