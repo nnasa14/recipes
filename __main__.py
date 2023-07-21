@@ -1,9 +1,9 @@
-import json
-import sqlite3
+#import sqlite3
 import recipes
 import ingredients
 import __init__
 import argparse
+import logging
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Document recipes')
@@ -11,7 +11,16 @@ if __name__ == "__main__":
     parser.add_argument('-I', '--ingredients', type=list, metavar='', required=True, help='list of ingredients for recipe')
     parser.add_argument('-i', '--ingredient', type=list, metavar='', required=True, help='one ingredient among the list of ingredients')
     args = parser.parse_args()
-    conn = sqlite3.connect("recipes.db")
+
+    #conn = sqlite3.connect("recipes.db")
+
+    logging.basicConfig(level=logging.WARNING, format="%(asctime)s %(levelname)s %(message)s", datefmt="%Y-%m-%d %H: %M: %S", filename="basic.log")
+    logging.debug("This is a debug message.")           #diagnosis and troubleshooting
+    logging.info("This is an info message.")            #confirmation program is working as expected
+    logging.warning("This is a warning message.")       #something unexpected happened that may cause issue in the future, but still working as expected
+    logging.error("This is an error message.")          #more serious problem, software is not able to execute code
+    logging.critical("This is a critical message.")     #serious error, program may be unanle to continue running
+
     test = recipes.Recipes()
     test_ing = ingredients.Ingredients()
     print(test_ing)
@@ -37,4 +46,4 @@ if __name__ == "__main__":
         args.title, args.ingredient)
     test_ing.edit_ingredients(
         args.title, args.ingredients)
-    print(test)
+    logging.warning(test)
