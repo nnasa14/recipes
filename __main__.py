@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     #conn = sqlite3.connect("recipes.db")
 
-    logging.basicConfig(level=logging.WARNING, format="%(asctime)s %(levelname)s %(message)s", datefmt="%Y-%m-%d %H: %M: %S", filename="basic.log")
+    logging.basicConfig(level=logging.WARNING, format="%(asctime)s %(levelname)s %(message)s", datefmt="%Y-%m-%d %H: %M: %S", filename="basic.log")         #DEBUG, INFO
     logging.debug("This is a debug message.")           #diagnosis and troubleshooting
     logging.info("This is an info message.")            #confirmation program is working as expected
     logging.warning("This is a warning message.")       #something unexpected happened that may cause issue in the future, but still working as expected

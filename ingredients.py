@@ -1,6 +1,15 @@
 import json
 
 class Ingredients:
+    """
+    This is a class for the CRUD and search specifically for the ingredients list in recipes.json
+
+    Methods:
+        search_ingredient(ingredient): Retrives recipes that contain a specific ingredient
+        add_ingredients(recipe, ingredients): Append a list of ingredients to an already existing one
+        delete_ingredient(recipe, ingredient): Delete a specific ingredient from a recipe
+        edit_ingredient(recipe, ingredient): Replace an existing list of ingredients in a recipe with another 
+    """
 
     def __init__(self):
         with open("recipes.json", "r") as json_file:

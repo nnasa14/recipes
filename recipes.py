@@ -1,6 +1,16 @@
 import json
 
 class Recipes:
+    """
+    A class of CRUD and search functions for recipes in database recipes.json
+
+    Methods: 
+        add_recipe(recipe, ingredients): add recipe as a dictionary in which a list of ingredients follows the title
+        delete_recipe(recipe): delete recipe along with its ingredients
+        edit_recipe(recipe, ingredients): change the ingredients of a recipe
+        search_recipe(recipe): retrieve a specfic recipe
+        import_recipe(file_path): add recipe to recipes.json from another json file
+    """
 
     def __init__(self):
         with open("recipes.json", "r") as json_file:
