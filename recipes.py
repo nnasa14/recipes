@@ -25,6 +25,13 @@ class Recipes:
         return f"{repr(self.data)}"
 
     def add_recipe(self, recipe, ingredients):
+        """
+        Function that adds a list of ingredient(s) to a specific recipe
+
+        Parameters:
+            recipe (str): Title of the recipe 
+            ingredients (list): A list of ingredient(s)
+        """
         if any(entry["title"] == recipe for entry in self.data):
             print("Recipe already archived")
             return
@@ -37,6 +44,13 @@ class Recipes:
             json.dump(self.data, json_file)
 
     def delete_recipe(self, recipe):
+        """
+        Function that adds a list of ingredient(s) to a specific recipe
+
+        Parameters:
+            recipe (str): Title of the recipe
+            ingredients (list): A list of ingredient(s)
+        """
         for recipes in self.data:
             if recipes["title"] == recipe:
                 self.data.remove(recipes)
@@ -48,6 +62,13 @@ class Recipes:
             json.dump(self.data, json_file)
 
     def edit_recipe(self, recipe, ingredients):
+        """
+        Function that adds a list of ingredient(s) to a specific recipe
+
+        Parameters:
+            recipe (str): Title of the recipe
+            ingredients (list): A list of ingredient(s)
+        """
         for recipes in self.data:
             # current = recipes["title"]
             if recipes["title"] == recipe:
@@ -60,12 +81,28 @@ class Recipes:
             json.dump(self.data, json_file)
 
     def search_recipe(self, recipe):
+        """
+        Function that adds a list of ingredient(s) to a specific recipe
+
+        Parameters:
+            recipe (str): Title of the recipe
+            ingredients (list): A list of ingredient(s)
+
+        Return:
+            dict: Recipe title and list of ingredients
+        """
         for recipes in self.data:
             if recipes["title"] == recipe:
                 return recipes
         return "Recipe not archived"
 
     def import_recipe(self, file_path):
+        """
+        Function that adds a list of ingredient(s) to a specific recipe
+
+        Parameters:
+            file_path (str): Location of file
+        """
         with open(file_path, "r") as file2:
             add_recipes = json.load(file2)
         self.data += add_recipes

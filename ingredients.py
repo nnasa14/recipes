@@ -27,6 +27,15 @@ class Ingredients:
         return f"{repr(self.data)}"
 
     def search_ingedient(self, ingredient):
+        """
+        Function that returns a list of recipes that contain a specific ingredient
+
+        Parameters:
+            ingredient (str): The target ingredient
+
+        Returns:
+            list: recipes and their ingrdients which include ingredient
+        """
         valid_recipes = []
         for recipes in self.data:
             for items in recipes["ingredients"]:
@@ -37,6 +46,13 @@ class Ingredients:
         return valid_recipes
 
     def add_ingredients(self, recipe, ingredients):
+        """
+        Function that adds a list of ingredient(s) to a specific recipe
+
+        Parameters:
+            recipe (str): Title of the recipe
+            ingredients (list): A list of ingredient(s)
+        """
         for recipes in self.data:
             # current = recipes["title"]
             if recipes["title"] == recipe:
@@ -52,6 +68,13 @@ class Ingredients:
             return
 
     def delete_ingredient(self, recipe, ingredient):
+        """
+        Function that adds a list of ingredient(s) to a specific recipe
+
+        Parameters:
+            recipe (str): Title of the recipe
+            ingredient (str): Ingredient function seeks to delete from a recipe
+        """
         for recipes in self.data:
             if recipes["title"] == recipe:
                 ingredients_value = recipes["ingredients"]
@@ -62,6 +85,13 @@ class Ingredients:
             json.dump(self.data, json_file)
 
     def edit_ingredients(self, recipe, ingredients):
+        """
+        Function that adds a list of ingredient(s) to a specific recipe
+
+        Parameters:
+            recipe (str): Title of the recipe
+            ingredients (list): A list of ingredient(s) to replace the list in the database
+        """
         for recipes in self.data:
             if recipes["title"] == recipe:
                 recipes["ingredients"] = ingredients
