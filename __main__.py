@@ -4,8 +4,16 @@ import ingredients
 import __init__
 import argparse
 import logging
+import configparser
 
 if __name__ == "__main__":
+    config = configparser.ConfigParser()
+    config["General"] = {
+        "title": "Tasty Pallet",
+        "version": "1.0",
+        "debug": "True"
+    }
+
     parser = argparse.ArgumentParser(description='Document recipes')
     parser.add_argument('-t', '--title', type=str, metavar='', required=True, help='title of recipe')
     parser.add_argument('-I', '--ingredients', type=list, metavar='', required=True, help='list of ingredients for recipe')
