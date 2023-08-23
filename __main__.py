@@ -1,4 +1,3 @@
-#import sqlite3
 import recipes
 import ingredients
 import __init__
@@ -19,8 +18,6 @@ if __name__ == "__main__":
     parser.add_argument('-I', '--ingredients', type=list, metavar='', required=True, help='list of ingredients for recipe')
     parser.add_argument('-i', '--ingredient', type=list, metavar='', required=True, help='one ingredient among the list of ingredients')
     args = parser.parse_args()
-
-    #conn = sqlite3.connect("recipes.db")
 
     logging.basicConfig(level=logging.WARNING, format="%(asctime)s %(levelname)s %(message)s", datefmt="%Y-%m-%d %H: %M: %S", filename="basic.log")         #DEBUG, INFO
     logging.debug("This is a debug message.")           #diagnosis and troubleshooting
