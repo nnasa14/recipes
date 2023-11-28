@@ -20,11 +20,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.WARNING, format="%(asctime)s %(levelname)s %(message)s", datefmt="%Y-%m-%d %H: %M: %S", filename="basic.log")         #DEBUG, INFO
-    logging.debug("This is a debug message.")           #diagnosis and troubleshooting
-    logging.info("This is an info message.")            #confirmation program is working as expected
-    logging.warning("This is a warning message.")       #something unexpected happened that may cause issue in the future, but still working as expected
-    logging.error("This is an error message.")          #more serious problem, software is not able to execute code
-    logging.critical("This is a critical message.")     #serious error, program may be unanle to continue running
+    logging.debug("This is a debug message.")           # Diagnosis and troubleshooting
+    logging.info("This is an info message.")            # Confirmation program is working as expected
+    logging.warning("This is a warning message.")       # Something unexpected happened that may cause issue in the future, but still working as expected
+    logging.error("This is an error message.")          # More serious problem, software is not able to execute code
+    logging.critical("This is a critical message.")     # Serious error, program may be unanle to continue running
 
     test = recipes.Recipes()
     test_ing = ingredients.Ingredients()
